@@ -1,23 +1,26 @@
 <h2>
-  {{ 'LOVE_TECH' | translate }} <div class="smile"></div>
+    {{ 'LOVE_TECH' | translate }}
+    <div class="smile"></div>
 </h2>
 
 <p>
-  {{'ABOUT_REWARD' | translate}}
+    {{'ABOUT_REWARD' | translate}}
 </p>
 <p>
-  {{'ABOUT_ADD' | translate}}
+    {{'ABOUT_ADD' | translate}}
 </p>
-
+<ngb-alert>
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</ngb-alert>
 <form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" [placeholder]="'INPUT_HINT' | translate">
-  <button type="submit">{{'ADD_BTN_TEXT' | translate}}</button>
+    <input [(ngModel)]="newName" name="newName" [placeholder]="'INPUT_HINT' | translate">
+    <button type="submit">{{'ADD_BTN_TEXT' | translate}}</button>
 </form>
 
 <ul>
-  <li *ngFor="let name of (names$ | async)">{{name}}</li>
+    <li *ngFor="let name of (names$ | async)">{{name}}</li>
 </ul>
 
 <p>
-  <a class="link" (click)="readAbout()">About - RouterExtensions example</a>
+    <a class="link" (click)="readAbout()">About - RouterExtensions example</a>
 </p>
