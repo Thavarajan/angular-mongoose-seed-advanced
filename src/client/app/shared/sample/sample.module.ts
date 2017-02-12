@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import { NgbModule, NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
+
 // app
 import { SAMPLE_COMPONENTS } from './components/index';
 import { SAMPLE_PROVIDERS } from './services/index';
@@ -21,12 +23,13 @@ import { MultilingualModule } from '../i18n/multilingual.module';
     HttpModule,
     RouterModule,
     MultilingualModule,
+    NgbModule
   ],
   declarations: [
     SAMPLE_COMPONENTS
   ],
   providers: [
-    SAMPLE_PROVIDERS
+    SAMPLE_PROVIDERS, NgbAlertConfig
   ],
   schemas: [
     NO_ERRORS_SCHEMA,
@@ -34,7 +37,8 @@ import { MultilingualModule } from '../i18n/multilingual.module';
   ],
   exports: [
     SAMPLE_COMPONENTS,
-    MultilingualModule
+    MultilingualModule,
+    NgbModule
   ]
 })
 export class SampleModule {
