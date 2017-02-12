@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { SeedAdvancedConfig } from './seed-advanced.config';
-// import { ExtendPackages } from './seed.config.interfaces';
+import { ExtendPackages } from './seed.config.interfaces';
 
 /**
  * This class extends the basic seed configuration, allowing for project specific overrides. A few examples can be found
@@ -9,6 +9,14 @@ import { SeedAdvancedConfig } from './seed-advanced.config';
 export class ProjectConfig extends SeedAdvancedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
+
+
+  FONTS_DEST = `${this.APP_DEST}/fonts`;
+  FONTS_SRC = [
+    'node_modules/bootstrap/dist/fonts/**',
+    'node_modules/font-awesome/fonts/**'
+  ];
+
 
   constructor() {
     super();
@@ -20,9 +28,15 @@ export class ProjectConfig extends SeedAdvancedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
-      // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
-    ];
+      { src: 'jquery/dist/jquery.min.js', inject: 'libs', vendor: false },
+      { src: 'tether/dist/js/tether.min.js', inject: 'libs', vendor: false },
+      { src: `bootstrap/dist/js/bootstrap.min.js`, inject: 'libs', vendor: false },
+      { src: `bootstrap/dist/css/bootstrap.min.css`, inject: true, vendor: false },
+      { src: 'primeng/resources/primeng.min.css', inject: true },
+      { src: 'primeng/resources/themes/start/theme.css', inject: true },
 
+      { src: `font-awesome/css/font-awesome.min.css`, inject: true, vendor: false },
+    ];
     // Add `local` third-party libraries to be injected/bundled.
     this.APP_ASSETS = [
       ...this.APP_ASSETS,
@@ -38,7 +52,15 @@ export class ProjectConfig extends SeedAdvancedConfig {
     //   path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
     // }];
     //
-    // this.addPackagesBundles(additionalPackages);
+
+    // @ng-bootstrap Componentts added
+    let additionalPackages: ExtendPackages[] = [{
+      name: '@ng-bootstrap/ng-bootstrap',
+      // Path to the package's bundle
+      path: 'node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js'
+    }];
+
+    this.addPackagesBundles(additionalPackages);
 
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
