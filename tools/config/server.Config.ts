@@ -49,13 +49,15 @@ export class ServerConfig extends SeedAdvancedConfig {
    * @type {string}
    */
   APP_SERVER_BASE = argv['base'] || '/api/';
+
   constructor() {
     super();
-    this.APP_DEST = this.APP_DEST + '/' + this.APP_CLIENT;
-    this.JS_DEST = `${this.APP_DEST}/js`;
-    this.CSS_DEST = `${this.APP_DEST}/css`;
-    this.TMP_DIR = this.TMP_DIR + '/' + this.APP_CLIENT;
-    this.setDefaultPluginConfig();
+    // this.APP_DEST = this.APP_DEST + '/' + this.APP_CLIENT;
+    // this.JS_DEST = `${this.APP_DEST}/js`;
+    // this.CSS_DEST = `${this.APP_DEST}/css`;
+    // this.TMP_DIR = this.TMP_DIR + '/' + this.APP_CLIENT;
+    // this.SYSTEM_BUILDER_CONFIG.paths[`${this.TMP_DIR}/*`]= `${this.TMP_DIR}/*`;
+    // this.setDefaultPluginConfig();
   }
 
 

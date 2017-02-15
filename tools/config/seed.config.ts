@@ -257,13 +257,13 @@ export class SeedConfig {
    * The folder for built files in the `dev` environment.
    * @type {string}
    */
-  DEV_DEST = `${this.DIST_DIR}/dev`;
+  DEV_DEST = `${this.DIST_DIR}/dev/${this.APP_CLIENT}`;
 
   /**
    * The folder for the built files in the `prod` environment.
    * @type {string}
    */
-  PROD_DEST = `${this.DIST_DIR}/prod`;
+  PROD_DEST = `${this.DIST_DIR}/prod/${this.APP_CLIENT}`;
 
   /**
    * The folder for the built files of the e2e-specs.
