@@ -42,13 +42,7 @@ export class ServerConfig extends SeedAdvancedConfig {
    */
   APP_SERVER_DEST = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT ? this.DEV_SERVER_DEST : this.PROD_SERVER_DEST;
 
-  /**
-   * The path for the base of the application at runtime.
-   * The default path is based on the environment '/',
-   * which can be overriden by the `--base` flag when running `npm start`.
-   * @type {string}
-   */
-  APP_SERVER_BASE = argv['base'] || '/api/';
+  APP_SERVER_BASE = argv['serverurl'] || '/api/';
 
   constructor() {
     super();
