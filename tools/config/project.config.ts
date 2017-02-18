@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { ServerConfig } from './server.Config';
+import { ServerConfig } from './seed-api.Config';
 import { ExtendPackages } from './seed.config.interfaces';
 
 /**
@@ -9,7 +9,7 @@ import { ExtendPackages } from './seed.config.interfaces';
 export class ProjectConfig extends ServerConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-  
+
 
   FONTS_DEST = `${this.APP_DEST}/fonts`;
   FONTS_SRC = [
