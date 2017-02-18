@@ -16,6 +16,7 @@
 
     "build.dev.watch": [
         "build.dev",
+        "watch.server",
         "watch.dev"
     ],
 
@@ -115,6 +116,7 @@
     "serve.dev": [
         "build.dev",
         "server.start",
+        "watch.server",
         "watch.dev"
     ],
 
