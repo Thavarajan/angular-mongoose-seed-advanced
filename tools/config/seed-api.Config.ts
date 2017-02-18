@@ -9,40 +9,40 @@ export class ServerConfig extends SeedAdvancedConfig {
    * The default directory is `server`.
    * @type {string}
    */
-  APP_SERVER = argv['server'] || 'server';
+  APP_API = argv['server'] || 'server';
 
   /**
    * The base folder of the server source files.
    * @type {string}
    */
-  APP_SERVER_SRC = `src/${this.APP_SERVER}`;
+  APP_API_SRC = `src/${this.APP_API}`;
 
   /**
    * The folder for built server files in the `dev` environment.
    * @type {string}
    */
-  DEV_SERVER_DEST = `${this.DIST_DIR}/dev/${this.APP_SERVER}`;
+  DEV_API_DEST = `${this.DIST_DIR}/dev/${this.APP_API}`;
 
   /**
    * The folder for the built server files in the `prod` environment.
    * @type {string}
    */
-  PROD_SERVER_DEST = `${this.DIST_DIR}/prod/${this.APP_SERVER}`;
+  PROD_API_DEST = `${this.DIST_DIR}/prod/${this.APP_API}`;
 
 
   /**
    * The folder for the built files in the `prod` environment.
    * @type {string}
    */
-  TMP_SERVER_DIR = `${this.DIST_DIR}/tmp/${this.APP_SERVER}`;
+  TMP_API_DIR = `${this.DIST_DIR}/tmp/${this.APP_API}`;
 
   /**
    * The folder for the built files, corresponding to the current environment.
    * @type {string}
    */
-  APP_SERVER_DEST = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT ? this.DEV_SERVER_DEST : this.PROD_SERVER_DEST;
+  APP_API_DEST = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT ? this.DEV_API_DEST : this.PROD_API_DEST;
 
-  APP_SERVER_BASE = argv['serverurl'] || '/api/';
+  APP_API_BASE = argv['serverurl'] || '/api/';
 
   constructor() {
     super();

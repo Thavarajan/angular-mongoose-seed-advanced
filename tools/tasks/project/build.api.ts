@@ -24,9 +24,9 @@ export =
         Config.TOOLS_DIR + '/manual_typings/**/*.d.ts'
       ]);
       let src = [
-        join(Config.APP_SERVER_SRC, '**/*.ts'),
-        '!' + join(Config.APP_SERVER_SRC, '**/*.spec.ts'),
-        '!' + join(Config.APP_SERVER_SRC, '**/*.e2e-spec.ts')
+        join(Config.APP_API_SRC, '**/*.ts'),
+        '!' + join(Config.APP_API_SRC, '**/*.spec.ts'),
+        '!' + join(Config.APP_API_SRC, '**/*.e2e-spec.ts')
       ];
 
       let projectFiles = gulp.src(src);
@@ -65,11 +65,11 @@ export =
         .pipe(plugins.sourcemaps.write('.', {
           includeContent: false,
           sourceRoot: (file: any) => {
-            return relative(file.path, Config.PROJECT_ROOT + '/' + Config.APP_SERVER_SRC).replace(sep, '/') + '/' + Config.APP_SERVER_SRC;
+            return relative(file.path, Config.PROJECT_ROOT + '/' + Config.APP_API_SRC).replace(sep, '/') + '/' + Config.APP_API_SRC;
           }
         }))
         .pipe(plugins.template(new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build()))
-        .pipe(gulp.dest(Config.APP_SERVER_DEST));
+        .pipe(gulp.dest(Config.APP_API_DEST));
     }
   };
 
