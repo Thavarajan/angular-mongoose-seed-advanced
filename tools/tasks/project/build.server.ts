@@ -65,8 +65,7 @@ export =
         .pipe(plugins.sourcemaps.write('.', {
           includeContent: false,
           sourceRoot: (file: any) => {
-            console.log(file.path);
-            return relative(file.path, Config.PROJECT_ROOT + '/' + Config.APP_SERVER_SRC).replace(sep, '/') + '/' + Config.APP_SERVER_SRC
+            return relative(file.path, Config.PROJECT_ROOT + '/' + Config.APP_SERVER_SRC).replace(sep, '/') + '/' + Config.APP_SERVER_SRC;
           }
         }))
         .pipe(plugins.template(new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build()))
