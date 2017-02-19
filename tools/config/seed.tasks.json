@@ -116,6 +116,7 @@
     "serve.dev": [
         "build.dev",
         "server.start",
+        "serve.api",
         "watch.api",
         "watch.dev"
     ],
