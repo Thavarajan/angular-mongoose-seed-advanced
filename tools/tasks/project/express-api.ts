@@ -1,3 +1,7 @@
 import express = require('express');
+import { Server } from 'http';
 
-export let API_APP = express();
+export class Apiserver {
+  public static API_APP = express();
+  public static server: Server;
+}
