@@ -4,7 +4,6 @@ import bodyParser = require('body-parser');
 import MethodOverride = require('./../MethodOverride');
 import BaseRoutes = require('./../../routes/base/BaseRoutes');
 
-
 class MiddlewaresBase {
 
     static get configuration () {

@@ -8,6 +8,7 @@ class HeroRoutes {
     constructor () {
         this._heroController = new HeroController();
     }
+
     get routes () {
         var controller = this._heroController;
         router.get('/heroes', controller.retrieve);
