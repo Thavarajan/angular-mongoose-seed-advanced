@@ -29,7 +29,6 @@ function watch(taskname: string, root: string = Config.APP_SRC) {
     let tasks = taskname.split(' ');
     plugins.watch(paths, (e: any) => {
       setTimeout(() => {
-        Apiserver.server.close();
         //plugins.series(tasks);
         //let tsk = gulp.task(tasks[1], [tasks[0]]);
         runSequence(tasks);
@@ -40,4 +39,4 @@ function watch(taskname: string, root: string = Config.APP_SRC) {
 /**
  * Executes the build process, watching for file changes and rebuilding the api development environment.
  */
-export = watch('build.api serve.api', Config.APP_API_SRC);
+export = watch('serve.api', Config.APP_API_SRC);
