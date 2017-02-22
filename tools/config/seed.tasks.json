@@ -6,7 +6,6 @@
     "build.dev": [
         "initialize",
         "clean.once",
-        "build.api",
         "build.fonts",
         "build.assets.dev",
         "build.html_css",
@@ -112,11 +111,14 @@
         "build.docs",
         "serve.docs"
     ],
-
+    "serve.api": [
+        "build.api",
+        "serve.dev.api"
+    ],
     "serve.dev": [
         "build.dev",
-        "server.start",
         "serve.api",
+        "server.start",
         "watch.api",
         "watch.dev"
     ],
@@ -132,6 +134,7 @@
 
     "serve.prod": [
         "build.prod",
+        "build.api",
         "server.prod"
     ],
 
