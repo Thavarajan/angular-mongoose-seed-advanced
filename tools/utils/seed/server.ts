@@ -5,6 +5,7 @@ import { resolve } from 'path';
 
 import * as codeChangeTool from './code_change_tools';
 import Config from '../../config';
+import { Apiserver } from '../../tasks/project/express-api';
 
 /**
  * Serves the Single Page Application. More specifically, calls the `listen` method, which itself launches BrowserSync.
@@ -60,11 +61,12 @@ export function serveCoverage() {
  */
 export function serveProd() {
   let root = resolve(process.cwd(), Config.PROD_DEST);
-  let server = express();
+  let server = Apiserver.getApiconfig();
 
   for (let proxy of Config.getProxyMiddleware()) {
     server.use(proxy);
   }
+
 
   server.use(Config.APP_BASE, express.static(root));
 
