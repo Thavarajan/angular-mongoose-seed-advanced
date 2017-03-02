@@ -107,9 +107,16 @@ export class SeedAdvancedConfig extends SeedConfig {
         }
       },
       {
-        name: 'ng2-translate',
+        name: '@ngx-translate/core',
         packageMeta: {
-          main: 'bundles/index.js',
+          main: 'bundles/core.umd.js',
+          defaultExtension: 'js'
+        }
+      },
+      {
+        name: '@ngx-translate/http-loader',
+        packageMeta: {
+          main: 'bundles/http-loader.umd.js',
           defaultExtension: 'js'
         }
       },
@@ -147,6 +154,16 @@ export class SeedAdvancedConfig extends SeedConfig {
       ];
 
     this.addPackagesBundles(additionalPackages);
+
+    // Settings for building sass (include ./srs/client/scss in includes)
+    // Needed because for components you cannot use ../../../ syntax
+    this.PLUGIN_CONFIGS['gulp-sass'] = {
+      includePaths: [
+        './src/client/scss/',
+        './node_modules/',
+        './'
+      ]
+    };
 
     // Settings for building sass for tns modules
     this.PLUGIN_CONFIGS['gulp-sass-tns'] = {

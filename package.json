@@ -183,6 +183,8 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.0",
     "@ngrx/store": "^2.2.1",
+    "@ngx-translate/core": "^6.0.0",
+    "@ngx-translate/http-loader": "0.0.3",
     "angulartics2": "^1.6.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
