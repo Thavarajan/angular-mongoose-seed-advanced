@@ -7,6 +7,7 @@ export class Apiserver {
 
   public static getApiconfig(): any {
     let API_APP = express();
+    console.log('Api comes here');
     API_APP.use(Middlewares.configuration);
     return API_APP;
   }
