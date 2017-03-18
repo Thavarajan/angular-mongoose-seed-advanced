@@ -5,7 +5,7 @@ import * as runSequence from 'run-sequence';
 
 import Config from '../../config';
 
-import { Apiserver } from './express-api';
+import { Apiserver } from '../../utils/project/express-api';
 
 const plugins = <any>gulpLoadPlugins();
 
