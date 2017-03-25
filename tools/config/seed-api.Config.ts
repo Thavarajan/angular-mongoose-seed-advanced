@@ -1,6 +1,7 @@
 import { argv } from 'yargs';
 import { SeedAdvancedConfig } from './seed-advanced.config';
 import { BUILD_TYPES } from './seed.config';
+import { Apiserver } from '../utils/project/express-api';
 
 export class ServerConfig extends SeedAdvancedConfig {
 
@@ -54,5 +55,8 @@ export class ServerConfig extends SeedAdvancedConfig {
     // this.setDefaultPluginConfig();
   }
 
+  getProxyMiddleware(): Array<any> {
+    return [Apiserver.getApiconfig()];
+  }
 
 }
