@@ -10,7 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader } from '@ngx-translate/core';
-
+import { IonicModule } from 'ionic-angular';
 // app
 import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
@@ -68,6 +68,7 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
 @NgModule({
   imports: [
     BrowserModule,
+    IonicModule.forRoot(AppComponent),
     CoreModule.forRoot([
       { provide: WindowService, useFactory: (win) },
       { provide: ConsoleService, useFactory: (cons) }
