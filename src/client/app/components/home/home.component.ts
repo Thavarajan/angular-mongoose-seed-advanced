@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+import { Button } from 'ionic-angular';
 // app
 import { RouterExtensions, Config } from '../../shared/core/index';
 import { IAppState, getNames } from '../../shared/ngrx/index';
