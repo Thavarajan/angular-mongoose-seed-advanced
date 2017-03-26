@@ -46,6 +46,7 @@ export class ProjectConfig extends ServerConfig {
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
     ];
 
+
     // Add packages (e.g. ng2-translate)
     // ng2-translate is already added with the advanced seed - here for example only
     // let additionalPackages: ExtendPackages[] = [{
@@ -64,8 +65,12 @@ export class ProjectConfig extends ServerConfig {
       name: 'ionic-angular',
       path: `${this.APP_BASE}node_modules/ionic-angular/umd/index.js`
     }];
-
     this.addPackagesBundles(additionalPackages);
+
+    this.DESKTOP_PACKAGES=[
+      ...this.DESKTOP_PACKAGES,
+      ...additionalPackages
+    ]
 
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
