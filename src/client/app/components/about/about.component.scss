@@ -1,20 +1,29 @@
 :host {
-  display: block;
-  padding: 0 16px;
+    display: block;
+    padding: 0 16px;
 }
 
 .feature-list .body {
-  font-size: 16;
-  color: #555;
-  margin: 0 0 5 0;
+    font-size: 16;
+    color: #555;
+    margin: 0 0 5 0;
 }
 
 .h1 {
-  color: #106cc8;
-  font-size: 24;
+    color: #106cc8;
+    font-size: 24;
 }
 
 .h4 {
-  color: #999;
-  font-size: 18;
+    color: #999;
+    font-size: 18;
+}
+
+.swiper-container {
+    width: auto;
+    height: auto;
+}
+
+.swiper-slide {
+    text-align: left;
 }

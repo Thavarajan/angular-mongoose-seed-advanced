@@ -1,5 +1,6 @@
-import { Injector, Component } from '@angular/core';
+import { Injector, ElementRef, ViewChild, Component, AfterViewInit } from '@angular/core';
 import { Config } from '../../shared/core/index';
+import * as swiper from 'swiper';
 
 @Component({
   moduleId: module.id,
@@ -9,7 +10,7 @@ import { Config } from '../../shared/core/index';
     'about.component.css',
   ],
 })
-export class AboutComponent {
+export class AboutComponent extends AfterViewInit {
 
   // Just one way you could handle the {N} `ui/page` Page class
   // in a shared component...
@@ -23,11 +24,36 @@ export class AboutComponent {
       return this._page;
     }
   }
+  @ViewChild('slider') private eleswp:ElementRef;
 
-  constructor(private injector: Injector) {
+  private swip: Swiper;
+
+  constructor(private injector: Injector, private ele: ElementRef) {
+    super();
     // This is here as an example
     // if (this.page) {
     //   this.page.actionBarHidden = true;
     // }
+
   }
+
+  ngAfterViewInit() {
+    let swpopt: SwiperOptions = {
+      // Optional parameters
+      loop: true,
+
+      // If we need pagination
+      pagination: '.swiper-pagination',
+
+      // Navigation arrows
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+
+      // And if we need scrollbar
+      scrollbar: '.swiper-scrollbar',
+    };
+    this.swip = new Swiper(this.eleswp.nativeElement, swpopt);
+
+  }
+
 }
