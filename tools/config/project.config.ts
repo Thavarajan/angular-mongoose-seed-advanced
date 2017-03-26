@@ -34,7 +34,9 @@ export class ProjectConfig extends ServerConfig {
       { src: `bootstrap/dist/css/bootstrap.min.css`, inject: true, vendor: false },
       { src: 'primeng/resources/primeng.min.css', inject: true },
       { src: 'primeng/resources/themes/start/theme.css', inject: true },
-
+      { src: 'swiper/dist/css/swiper.min.css', inject: true },
+      { src: 'swiper/dist/js/swiper.min.js', inject: true },
+      { src: 'ionic-angular/css/ionic.min.css', inject: true },
       { src: `font-awesome/css/font-awesome.min.css`, inject: true, vendor: false },
     ];
     // Add `local` third-party libraries to be injected/bundled.
@@ -58,6 +60,9 @@ export class ProjectConfig extends ServerConfig {
       name: '@ng-bootstrap/ng-bootstrap',
       // Path to the package's bundle
       path: 'node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js'
+    }, {
+      name: 'ionic-angular',
+      path: `${this.APP_BASE}node_modules/ionic-angular/umd/index.js`
     }];
 
     this.addPackagesBundles(additionalPackages);
