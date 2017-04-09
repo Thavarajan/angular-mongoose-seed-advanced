@@ -1,7 +1,7 @@
 ![Angular Seed Advanced](https://d2wp4shknjcfjl.cloudfront.net/api/file/olEzxJQ2KcXrZHzbt9UA)![Angular Seed Advanced Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
 
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
-[![Build Status](https://travis-ci.org/NathanWalker/angular-seed-advanced.svg?branch=master)](https://travis-ci.org/NathanWalker/angular-seed-advanced)
+[![Build Status](https://travis-ci.org/NathanWalker/angular-seed-advanced.svg?branch=master)](https://travis-ci.org/Nate.hanWalker/angular-seed-advanced)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Dependency Status](https://david-dm.org/NathanWalker/angular-seed-advanced.svg)](https://david-dm.org/NathanWalker/angular-seed-advanced)
 [![devDependency Status](https://david-dm.org/NathanWalker/angular-seed-advanced/dev-status.svg)](https://david-dm.org/NathanWalker/angular-seed-advanced#info=devDependencies)
@@ -290,11 +290,35 @@ A documentation of the provided tools can be found in [tools/README.md](tools/RE
   - `src/client/app/shared/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 
+### Logging
+
+* what is the basic API surface around logging?
+  - ``LogService`` is the main class that consumer code should use to write diagnostic information to one or more configured targets
+  - ``LogTarget`` is an abstraction of where the log output is written. (e.g. ``ConsoleTarget`` writes diagnostics to the ``console``)
+  - ``LogTargetBase`` is a base abstract class that makes it easier to implement custom log target. It provides a way for inheritors to filter messages by importance.
+  - ``LogLevel`` is level of importance associated with every log message (e.g. ``Debug``, ``Info``, ``Warning``, ``Error``)
+
+* how to control amount of information logged?
+  - If a log target is derrived from ``LogTargetBase`` the target can be configured to filter messages by importance. You can pass ``minLogLevel`` as ``LogTargetOptions``
+  - ``LogService`` additionally uses ``Config.Debug`` switches as a global treshhold to further filter verbosity of the log messages.
+   
+* how to implement custom log target?
+  - Derrive from ``LogTargetBase`` class and implement ``writeToLog`` method (see ``ConsoleTarget``). You can configure several log targets at a time inside main application module. For example:
+  ```javascript
+  CoreModule.forRoot([
+      { provide: WindowService, useFactory: (win) },
+      { provide: ConsoleService, useFactory: (cons) },
+      { provide: LogTarget, useFactory: (consoleLogTarget), deps: [ConsoleService], multi: true },
+      { provide: LogTarget, useFactory: () => new LogStashTarget({minLogLevel: LogLevel.Debug}) }
+    ]),
+  ```
+
+
 ## General best practice guide to sharing code
 
 There’s actually only a few things to keep in mind when sharing code between web/mobile. The seed does take care of quite a few of those things but here’s a brief list:
 
-* Don’t import {N} modules into your components/services. {N} modules can only be used inside the {N} app therefore cannot be shared. To get around this, use `OpaqueTokens` which is a fancy name for something quite simple. [Learn more here](http://blog.thoughtram.io/angular/2016/05/23/opaque-tokens-in-angular-2.html). A great example of how to integrate 2 different plugins (1 for web, 1 for {N}) and share all the code exists in [this wiki article: How to integrate Firebase across all platforms](https://github.com/NathanWalker/angular-seed-advanced/wiki/How-to-integrate-Firebase-across-all-platforms-(web-nativescript-desktop)) written by the awesome [Scott Lowe](https://twitter.com/scott_d_lowe).
+* Don’t import {N} modules into your components/services. {N} modules can only be used inside the {N} app therefore cannot be shared. To get around this, use `InjectionToken`'s. [Learn more here](http://blog.thoughtram.io/angular/2016/05/23/opaque-tokens-in-angular-2.html). A great example of how to integrate 2 different plugins (1 for web, 1 for {N}) and share all the code exists in [this wiki article: How to integrate Firebase across all platforms](https://github.com/NathanWalker/angular-seed-advanced/wiki/How-to-integrate-Firebase-across-all-platforms-(web-nativescript-desktop)) written by the awesome [Scott Lowe](https://twitter.com/scott_d_lowe).
 * Use the conditional hooks provided by the seed in shared methods where you may need to handle something differently in {N} than you do on the web. For example, see [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/app/shared/i18n/components/lang-switcher.component.ts#L35-L41).
 * Don’t use window global. Inject the `WindowService` provided by the seed instead. This includes usage of `alert`, `confirm`, etc. For example:
 

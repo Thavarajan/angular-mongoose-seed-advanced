@@ -10,7 +10,7 @@ import * as swiper from 'swiper';
     'about.component.css',
   ],
 })
-export class AboutComponent extends AfterViewInit {
+export class AboutComponent implements AfterViewInit {
 
   // Just one way you could handle the {N} `ui/page` Page class
   // in a shared component...
@@ -29,7 +29,6 @@ export class AboutComponent extends AfterViewInit {
   private swip: Swiper;
 
   constructor(private injector: Injector, private ele: ElementRef) {
-    super();
     // This is here as an example
     // if (this.page) {
     //   this.page.actionBarHidden = true;
