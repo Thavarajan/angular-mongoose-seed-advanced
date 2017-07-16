@@ -37,15 +37,28 @@ export class ProjectConfig extends ServerConfig {
       { src: 'primeng/resources/themes/start/theme.css', inject: true },
       { src: 'swiper/dist/css/swiper.min.css', inject: true },
       { src: 'swiper/dist/js/swiper.min.js', inject: true },
+      //{ src: 'ionic-angular/umd/index.js', inject: true },
       { src: 'ionic-angular/css/ionic.min.css', inject: true },
       { src: `font-awesome/css/font-awesome.min.css`, inject: true, vendor: false },
     ];
+
+    //this.SYSTEM_BUILDER_CONFIG.paths['ionic-angular'] ='node_modules/ionic-angular/bundles/ionic.umd.js';
+
     // Add `local` third-party libraries to be injected/bundled.
     this.APP_ASSETS = [
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
     ];
 
+    this.ROLLUP_INCLUDE_DIR = [
+      ...this.ROLLUP_INCLUDE_DIR,
+      //'node_modules/moment/**'
+    ];
+
+    this.ROLLUP_NAMED_EXPORTS = [
+      ...this.ROLLUP_NAMED_EXPORTS,
+      //{'node_modules/immutable/dist/immutable.js': [ 'Map' ]},
+    ];
 
     // Add packages (e.g. ng2-translate)
     // ng2-translate is already added with the advanced seed - here for example only
@@ -62,19 +75,21 @@ export class ProjectConfig extends ServerConfig {
       // Path to the package's bundle
       path: 'node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js'
     }, {
-      name: 'ionic-angular',
-      path: `${this.APP_BASE}node_modules/ionic-angular/umd/index.js`
-    }];
+        name: 'ionic-angular',
+        path: 'node_modules/ionic-angular/umd/index.js',
+
+      }
+    ];
     this.addPackagesBundles(additionalPackages);
 
-    this.DESKTOP_PACKAGES=[
+    this.DESKTOP_PACKAGES = [
       ...this.DESKTOP_PACKAGES,
       ...additionalPackages
-    ]
+    ];
 
     /* Add proxy middleware */
     // this.PROXY_MIDDLEWARE = [
-    //   require('http-proxy-middleware')({ ws: false, target: 'http://localhost:3003' })
+    //   require('http-proxy-middleware')('/api', { ws: false, target: 'http://localhost:3003' })
     // ];
 
     /* Add to or override NPM module configurations: */

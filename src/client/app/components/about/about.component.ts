@@ -1,5 +1,5 @@
 import { Injector, ElementRef, ViewChild, Component, AfterViewInit } from '@angular/core';
-import { Config } from '../../shared/core/index';
+import { Config } from '../../modules/core/index';
 import * as swiper from 'swiper';
 
 @Component({

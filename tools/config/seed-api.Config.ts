@@ -53,6 +53,7 @@ export class ServerConfig extends SeedAdvancedConfig {
     // this.TMP_DIR = this.TMP_DIR + '/' + this.APP_CLIENT;
     // this.SYSTEM_BUILDER_CONFIG.paths[`${this.TMP_DIR}/*`]= `${this.TMP_DIR}/*`;
     // this.setDefaultPluginConfig();
+
   }
 
   getProxyMiddleware(): Array<any> {

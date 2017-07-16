@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { Button } from 'ionic-angular';
 // app
-import { RouterExtensions, Config } from '../../shared/core/index';
-import { IAppState, getNames } from '../../shared/ngrx/index';
-import * as nameList from '../../shared/sample/index';
+import { RouterExtensions, Config } from '../../modules/core/index';
+import { IAppState, getNames } from '../../modules/ngrx/index';
+import { NameList } from '../../modules/sample/index';
 
 @Component({
   moduleId: module.id,
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
    * @returns return false to prevent default form submit behavior to refresh the page.
    */
   addName(): boolean {
-    this.store.dispatch(new nameList.AddAction(this.newName));
+    this.store.dispatch(new NameList.AddAction(this.newName));
     this.newName = '';
     return false;
   }
